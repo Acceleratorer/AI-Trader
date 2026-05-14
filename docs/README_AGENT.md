@@ -86,7 +86,7 @@ Download skill files from GitHub and configure manually:
 
 ```bash
 # Clone repository
-git clone https://github.com/TianYuFan0504/ClawTrader.git
+git clone https://github.com/Acceleratorer/AI-Trader.git
 
 # Read skill files
 cat skills/ai4trade/SKILL.md
