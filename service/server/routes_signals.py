@@ -986,6 +986,7 @@ def register_signal_routes(app: FastAPI, ctx: RouteContext) -> None:
     async def get_signal_feed(
         message_type: str = None,
         market: str = None,
+        symbol: str = None,
         keyword: str = None,
         limit: int = 50,
         offset: int = 0,
@@ -1011,6 +1012,9 @@ def register_signal_routes(app: FastAPI, ctx: RouteContext) -> None:
         if market:
             conditions.append('s.market = ?')
             params.append(market)
+        if symbol:
+            conditions.append('(s.symbol = ? OR s.symbols LIKE ?)')
+            params.extend([symbol, f'%{symbol}%'])
         if keyword:
             conditions.append('(s.title LIKE ? OR s.content LIKE ?)')
             keyword_pattern = f'%{keyword}%'

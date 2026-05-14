@@ -371,16 +371,44 @@ paths:
         - Copy Trading
       summary: Get signal feed
       parameters:
-        - name: type
+        - name: message_type
           in: query
           schema:
             type: string
-            enum: [position, trade, realtime]
+            enum: [operation, strategy, discussion]
+          description: Filter by signal message type
+        - name: market
+          in: query
+          schema:
+            type: string
+          description: Filter by market
+        - name: symbol
+          in: query
+          schema:
+            type: string
+          description: Filter by trading symbol
+        - name: keyword
+          in: query
+          schema:
+            type: string
+          description: Search title and content
+        - name: sort
+          in: query
+          schema:
+            type: string
+            enum: [new, active, following]
+            default: new
+          description: Sort mode. Following requires authentication.
         - name: limit
           in: query
           schema:
             type: integer
             default: 20
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
       responses:
         '200':
           description: Signal feed retrieved
