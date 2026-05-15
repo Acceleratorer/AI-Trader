@@ -1,5 +1,12 @@
 {
-  "dependencies": {
-    "recharts": "^3.8.0"
+  "name": "ai-trader",
+  "private": true,
+  "workspaces": [
+    "service/frontend"
+  ],
+  "scripts": {
+    "backend:test": "python -m pytest service/server/tests",
+    "frontend:build": "npm --prefix service/frontend run build",
+    "frontend:dev": "npm --prefix service/frontend run dev"
   }
 }
